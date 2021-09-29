@@ -1,0 +1,25 @@
+.outlet{
+    width: 1879px;
+    background: url('../assets/background-destaque.png') no-repeat;   
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+.right{
+    color: #fff !important;
+    position: absolute;
+    right: 5vh; 
+    top: 15px;  
+    font-weight: bold; 
+}
+
+.icon{
+    margin-left: 5px;
+    height: 25px;
+}
+
+.header{
+    background-color: #383c44;
+    width: 100;
+    color: #fff;
+}

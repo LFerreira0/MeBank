@@ -1,0 +1,581 @@
+.home{
+    height: 94vh;
+    width: 1879px;
+    background-color: #fafafa;
+
+    #inicio{
+        position: absolute;
+        top: 10px;
+        font-size: 25px;        
+    }
+}
+
+#sem-atividades{
+    color: rgb(145, 145, 145);
+    margin-left: 2.5%;
+    font-size: 17px;
+
+}
+
+.controle-saldo{    
+    width: 96.9vh;
+    border: 1px solid #000;
+    position: absolute;
+    border-radius: 5px;
+    top: 20px;
+    padding: 10px;    
+    
+    #saldoInsuficiente{
+        position: absolute;
+        bottom: 10px;
+        font-size: 13px;
+        color: red;
+        left: 23.5%;
+    }
+
+    #poupancaInsuficiente{
+        position: absolute;
+        bottom: 10px;
+        font-size: 13px;
+        color: red;
+        left: 35.5%;
+    }
+
+    h1{
+        margin-left: 2.5%;
+        margin-top: 30px;
+    }
+    span{
+        font-size: 20px;
+        margin-left: 2.5%;
+        font-weight: bold;
+        margin-top: 30px !important;
+    }
+    #saldo{
+        margin-left: 2.5%;
+        color: DodgerBlue;
+    }
+
+    .valor-guardado{        
+        display: inline-block;
+        width: 20%;
+        position: absolute;
+        top: 2.5%;
+        right: 3.5%;
+        color: rgb(145, 145, 145);
+    }
+}
+#historico{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 20px;
+      
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+}
+
+
+.btn{
+    margin-left: 2.5%;
+    margin-top: 30px;
+}
+.icon{
+    margin-left: 10px;
+}
+.fatura{
+    width: 48.4vh;
+    border: 1px solid #000;
+    position: absolute;
+    border-radius: 5px;
+    top: 20px;
+    left: 51%;
+    height: 45vh;
+    min-height: 45vh;
+    span{
+        font-size: 20px;
+        margin-left: 2.5%;
+        font-weight: bold;
+    }
+    .fatura-atual{
+        margin-left: 6%;        
+        width: 50%;
+        float: left;
+        margin-top: 2.5%;
+    }
+    #valor-fatura{
+        color: DodgerBlue;        
+    }
+    .data-vencimento{                
+        width: 30%;
+        float: right;
+        font-size: 10px !important;        
+        color: rgb(145, 145, 145);
+        text-align: right;
+        margin-right: 7.5%;
+        margin-top: 2.5%;
+    }
+}
+
+.tabela-fatura{
+    width: 100%;    
+    margin-top: 22%;
+}
+
+#lancamentos{
+    margin-left: 7.5%;
+}
+
+#fatura-table{    
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 85%;
+    margin-left: 7.5%;   
+    margin-top: 5%;       
+}
+
+.opcoes-pagamento{
+    position: absolute;
+    width: 20%;
+    height: 30%;    
+    left: 76.1%;
+    top: 20px;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    
+    span{
+        font-size: 20px;        
+        font-weight: bold;
+        position: absolute;        
+        top: 20px;
+        left: 9%;
+
+    }
+
+    .opcoes{        
+        position: absolute;
+        top: 25%;
+        width: 82%;        
+        margin-left: 9%;
+        font-weight: bold;        
+        height: 65%;
+
+        label{
+            margin-left: 5px;
+        }
+      
+        .pagamento{            
+            border-radius: 5px;
+            width: 50%;
+            float: right;
+            margin-top: -10px;
+        }
+        
+        .finalizarPagamento{
+            position: absolute;
+            bottom: 10px;
+            left: 0px;
+        }
+
+        .cancelarPagamento{
+            position: absolute;
+            bottom: 10px;
+            left: 30%;
+        }
+
+        #warning-valor{
+            color: red;
+            font-size: 13px;
+            position: absolute;
+            top: 60%;
+            left: 0%;
+        }
+    }
+}
+
+#pgt-total{
+    margin-top: 0px;
+}
+
+.pay{
+    margin-left: 8%;
+    margin-top: 32px;
+}
+.transferencia{
+    width: 96.9vh;
+    height: 15%;
+    border: 1px solid #000;
+    position: absolute;
+    top: 47.3vh;
+    border-radius: 5px;      
+}
+.transfere{    
+    float: left;
+    height: 75%;    
+    width: 35%;
+}
+
+#transferencias-span{
+    font-size: 20px;
+    margin-left: 2.5%;
+    font-weight: bold;
+    padding-top: 10px;
+    position: absolute;
+    top: 5%;
+    left: 1%;
+}
+
+.old{
+    margin-left: 10%;
+}
+
+.pix{
+    width: 95%;
+    height: 75%;    
+    float: left;
+    margin-left: 2.5%;
+    margin-top: 3%;        
+    
+    #icon{
+        height: 80%;
+        float: left;
+        margin-left: 2.5%;        
+    }
+
+    p{
+        font-size: 20px;
+        margin-left: 2.5%;
+        font-weight: bold;
+        padding-top: 21px;
+        float: left;
+        padding-right: 8%;
+    }
+
+    .pix-funcoes{
+        height: 100%;
+        width: 20%;        
+        float: left;
+        margin-left: 15px;
+        text-align: center;
+        font-weight: bold;
+        margin-top: -12px;
+        border-radius: 5px;       
+    }
+    .pix-funcoes:hover{
+        background-color: #dddddd;
+        transition: 1s;
+        cursor: pointer;
+    }
+}
+.cartoes{
+    width: 48.4vh;
+    border: 1px solid #000;
+    position: absolute;
+    border-radius: 5px;
+    position: absolute;
+    top: 47.3vh;
+    left: 51%;
+    height: 15%;
+
+    .opc-cartoes{
+        width: 30%;
+        height: 100%;        
+        float: left;
+        margin-left: 2.5%;
+        text-align: center;        
+    }
+    .opc-cartoes:hover{
+        cursor: pointer;
+    }
+}
+.icone{
+    height: 50px !important;    
+    margin-top: 15px;        
+}
+#ad{
+    position: absolute;
+    top: 70%;
+    width: 75.1%;
+    height: 15%;
+}
+.btn-guardar{
+    float: left;
+}
+.btn-depositar{
+    float: left;
+}
+.btn-resgatar{
+    float: left;
+}
+.deposito{    
+    width: 20%;        
+    float: left;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+.guardar{    
+    width: 20%; 
+    float: left;       
+    margin-left: 10px;
+    margin-top: 30px;
+}
+.resgatar{
+    width: 20%;
+    float: left;
+    margin-left: 10px;
+    margin-top: 30px;
+}
+.icone-assistente-virtual{    
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    text-align: center;
+    position: absolute;
+    right: 1%;
+    top: 91%;
+
+    .icone{
+        height: 50px !important;                  
+    }
+    .icone:hover{
+        cursor: pointer;
+    }
+}
+.chat-window{
+    width: 15%;
+    height: 30%;    
+    position: absolute;
+    right: 1px;
+    bottom: 0px;
+    border-radius: 10px 0px 0px 0px;
+    color: #000;
+    background-color: gainsboro;
+    text-align: center;
+    
+    span{
+        opacity: 0.5;
+        font-weight: bold;
+    }
+
+    .chat-fundo{
+        height: 75px;
+        margin-top: 15%;
+        opacity: 0.5;
+    }
+
+    .chat-header{
+        height: 15%;
+        width: 100%;
+        background-color: #383c44;
+        border-radius: 10px 0px 0px 0px;
+        cursor: pointer;
+        color: #fff;
+
+        p{
+            font-weight: bold;
+            margin-left: 20px;
+            line-height: 38px;            
+        }       
+    }
+}
+.aba{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    background-color:  #383c44;
+    border-radius: 10px 0px 0px 0px;
+    cursor: pointer;
+    height: 38px;
+    width: 15%;
+    color: #fff;
+    
+    p{
+        font-weight: bold;
+        margin-left: 20px;
+        line-height: 38px;
+    }
+
+}
+
+.opcoes-guardar{
+    position: absolute;
+    width: 20%;
+    height: 30%;    
+    left: 76.1%;
+    top: 20px;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.area-pix{
+    position: absolute;
+    width: 20%;
+    height: 29%;    
+    left: 76.1%;
+    top: 20px;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    
+
+    span{
+        font-size: 20px;        
+        font-weight: bold;
+        position: absolute;        
+        top: 20px;
+        left: 9%;
+    }
+
+    p{
+        margin-top: 20%;
+        margin-left: 9%;
+        font-weight: bold;
+    }
+
+    .pix-impt{
+        width: 82%;
+        margin-left: 9%;
+    }
+
+    .continuar{
+        margin-left: 9%;
+    }
+}
+
+.dados-pix{
+    position: absolute;
+    width: 20%;
+    height: 34%;    
+    left: 76.1%;
+    top: 31.4%;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    .dados{
+        margin-top: 20px;
+    }
+
+    #chave{
+        font-weight: bold;
+        margin-left: 9%;        
+    }
+
+    #valor{
+        float: right;
+        margin-right: 9%;
+    }
+
+    #qr-code{
+        width: 40%;
+        margin-left: 30%;
+        margin-top: 5%;
+    }
+}
+
+.area-pix-enviar{
+    position: absolute;
+    width: 20%;
+    height: 38.5%;    
+    left: 76.1%;
+    top: 20px;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+
+    span{
+        font-size: 20px;        
+        font-weight: bold;
+        position: absolute;        
+        top: 20px;
+        left: 9%;
+    }
+    
+    p{
+        margin-top: 20%;
+        margin-left: 9%;
+        font-weight: bold;
+    }
+
+    .pix-enviar{
+        width: 82%;
+        margin-left: 9%;
+    }
+
+    #p-send{
+        margin-top: 5%;
+    }
+
+    .enviar{
+        margin-left: 9%;
+    }
+    
+    #saldoPixInvalido{
+        position: absolute;
+        top: 71%;
+        color: red;
+        font-size: 13px;
+    }
+}
+
+.keys{
+    position: absolute;
+    width: 20%;
+    height: 15%;    
+    left: 76.1%;
+    top: 50.3%;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;    
+
+    span{
+        font-size: 20px;        
+        font-weight: bold;
+        position: absolute;        
+        top: 20px;
+        left: 9%;
+    }
+    ul{
+        margin-top: 40px;
+        margin-left: 5%;
+    }
+
+    button{
+        position: absolute;
+        font-size: 20px;
+        top: 17px;
+        right: 5%;
+        font-weight: bold;
+        background-color: #fff;
+        border: none;
+    }
+
+}
+
+.extrato{
+    position: absolute;
+    width: 23%;
+    height: 48%;    
+    left: 76.1%;
+    top: 20px;
+    line-height: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;  
+
+    h1{
+        font-size: 20px;
+        margin-left: 8%;
+        font-weight: bold;
+        margin-top: 15px !important;
+    }
+}

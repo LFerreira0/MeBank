@@ -1,0 +1,14 @@
+﻿
+<!-- nav -->
+<nav class="navbar navbar-expand header" *ngIf="currentUser">
+    <div class="navbar-nav">        
+        <a class="nav-item nav-link" style="width: 100%;">Olá {{currentUser.nomeSocial}}</a>
+        <a class="right" (click)="logout()">Logout<i class="fa fa-sign-out icon" aria-hidden="true"></i></a>
+    </div>
+</nav>
+<app-header *ngIf="!currentUser"></app-header>
+
+<div class="outlet">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>

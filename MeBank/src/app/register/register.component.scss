@@ -1,0 +1,21 @@
+.content{
+    width: 1879px;
+    background: url('../../assets/background.png') no-repeat;   
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+    height: 100vh;
+    z-index: 99;
+}
+
+.register{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 15%;
+    color: #fff;
+
+    a{
+        color: #fff !important;
+    }
+}

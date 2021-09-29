@@ -1,0 +1,48 @@
+﻿<div class="content">
+    <div class="register">   
+
+        <div class="cover"></div>
+        
+        <h2>Registro</h2>
+        <br>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="nomeCompleto">Nome Completo</label>
+                <input type="text" formControlName="nomeCompleto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nomeCompleto.errors }" autocomplete="off" />
+                <div *ngIf="submitted && f.nomeCompleto.errors" class="invalid-feedback">
+                    <div *ngIf="f.nomeCompleto.errors.required">Nome é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cpf">CPF/CNPJ</label>
+                <input type="text" formControlName="cpf" class="form-control" mask="CPF_CNPJ" [ngClass]="{ 'is-invalid': submitted && f.cpf.errors }" autocomplete="off" />
+                <div *ngIf="submitted && f.cpf.errors" class="invalid-feedback">
+                    <div *ngIf="f.cpf.errors.required">CPF ou CNPJ é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nomeSocial">Como você gostaria de ser chamado ?</label>
+                <input type="text" formControlName="nomeSocial" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nomeSocial.errors }" autocomplete="off"/>
+                <div *ngIf="submitted && f.nomeSocial.errors" class="invalid-feedback">
+                    <div *ngIf="f.nomeSocial.errors.required">Nome social é obrigatório</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" autocomplete="off" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Senha é obrigatória</div>
+                    <div *ngIf="f.password.errors.minlength">A senha deve ter ao menos 6 caracteres.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-secondary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Registrar
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </button>
+                <a routerLink="/login" class="btn btn-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

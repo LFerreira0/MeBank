@@ -1,0 +1,75 @@
+.landing-page{
+    height: 100vh;
+    width: 1879px;
+    background: url('../../assets/background-destaque.png') no-repeat;   
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.texto-destaque{
+    margin-left: 12%;
+}
+
+.texto-destaque h1{
+    position: absolute;
+    top: 45vh;
+    width: 60vh;
+    font-size: 50px;
+    color: #fff;
+}
+
+#trecho1{
+    position: absolute;
+    top: 63vh;
+    width: 64vh;
+    font-size: 35px;
+    color: #fff;
+}
+#trecho2{
+    position: absolute;
+    top: 68vh;
+    width: 64vh;
+    font-size: 35px;
+    color: #fff;
+}
+#trecho3{
+    position: absolute;
+    top: 73vh;
+    width: 64vh;
+    font-size: 35px;
+    color: #fff;
+}
+
+@media (max-width: 1800px){
+
+    h1{                 
+    }
+
+    #trecho1{        
+        top: 75vh;
+    }
+
+    #trecho2{        
+        top: 80vh;
+    }
+
+    #trecho3{        
+        top: 85vh;
+    }
+}
+
+@media (max-width: 850px){
+    .texto-destaque{
+        h1, #trecho1, #trecho2, #trecho3{
+            width: 80vh;         
+            left: 6vh;
+        }
+    }
+}
+
+@media (max-width: 650px){
+    .texto-destaque{
+        display: none;
+     }
+}

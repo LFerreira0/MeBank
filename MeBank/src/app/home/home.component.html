@@ -1,0 +1,254 @@
+﻿
+<nav class="navbar navbar-expand header-style home">
+    <div class="controle-saldo">
+        <span>Saldo e extrato da conta corrente</span>
+        <br>
+        <span id="saldo">R$ {{saldo}}</span>            
+        <h1>Histórico</h1>
+        <h2 *ngIf="atividades.length == 0" id="sem-atividades">Você ainda não tem atividades teste mês</h2>
+        <div class="valor-guardado">
+          <span><i class="fa fa-lock" aria-hidden="true"></i>
+            Valor guardado</span>
+          <br>
+          <span>R$ {{saldoPoupanca}}</span>
+        </div>
+        <table id="historico" *ngIf="atividades.length > 0">
+            <tr>
+              <th>Nome</th>
+              <th>Valor</th>
+              <th>Data</th>
+            </tr>
+            <tr>
+              <td>{{atividades[0].nome}}</td>
+              <td>{{atividades[0].tipo}} R$ {{atividades[0].valor}}</td>
+              <td>{{atividades[0].data | date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr *ngIf="atividades.length > 1">
+              <td>{{atividades[1].nome}}</td>
+              <td>{{atividades[1].tipo}} R$ {{atividades[1].valor}}</td>
+              <td>{{atividades[1].data | date:'dd/MM/yyyy'}}</td>
+            </tr>
+            <tr *ngIf="atividades.length > 2">
+              <td>{{atividades[2].nome}}</td>
+              <td>{{atividades[2].tipo}} R$ {{atividades[2].valor}}</td>
+              <td>{{atividades[2].data | date:'dd/MM/yyyy'}}</td>
+            </tr>
+          </table>
+
+          <button type="button" class="btn btn-dark btn-depositar" (click)="deposito()">Depositar</button>  
+          <input type="text" class="form-control deposito" mask="separator.0" thousandSeparator="." *ngIf="depositoAtivo" [(ngModel)] = "valorDeposito"/>
+
+          <button type="button" class="btn btn-dark btn-guardar" (click)="guardar()">Guardar</button>
+          <input type="text" class="form-control guardar" mask="separator.0" thousandSeparator="." *ngIf="guardarAtivo" [(ngModel)] = "valorGuardado"/>
+          
+          <button type="button" class="btn btn-dark btn-resgatar" (click)="resgatar()">Resgatar</button>
+          <input type="text" class="form-control resgatar" mask="separator.2" thousandSeparator="." *ngIf="resgatarAtivo" [(ngModel)] = "valorResgate"> 
+
+          <span *ngIf="saldoInsuficiente" id="saldoInsuficiente">Saldo insuficiente</span>
+          <span *ngIf="poupancaInsuficiente" id="poupancaInsuficiente">Fundo insuficiente</span>
+          
+       
+          <br>
+          <br>          
+    </div>
+    <div class="fatura">      
+        <div class="fatura-atual">
+            <span>Fatura atual</span>        
+            <br>
+            <span id="valor-fatura">R$ {{valorFatura}}</span>
+        </div>
+        <div class="data-vencimento">
+            <div class="data-nascimento-conteudo">
+                <span>vencimento</span>
+                <br>
+                <span>26/09/2021</span>
+            </div>
+        </div>
+        <div class="tabela-fatura">
+            <h1 id="lancamentos">Lançamentos</h1>
+            <table id="fatura-table">
+                <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Data</th>
+                </tr>
+                <tr>
+                <td>Netflix</td>
+                <td>R$ 35,98</td>
+                <td>02 SET</td>
+                </tr>
+                <tr>
+                <td>Prime Video</td>
+                <td>R$ 10,65</td>
+                <td>05 SET</td>
+                </tr>
+                <tr>
+                <td>Disney Plus</td>
+                <td>R$ 20,00</td>
+                <td>05 SET</td>
+                </tr>
+                <tr>
+                <td>Kabum</td>
+                <td>R$ 250,00</td>
+                <td>17 SET</td>
+                </tr>
+                <tr>
+                <td>Americanas</td>
+                <td>R$ 650,00</td>
+                <td>25 SET</td>
+                </tr>
+            </table>       
+            <button type="button" class="btn btn-dark pay" (click)="pagarFatura()">Pagar<i class="fa fa-credit-card icon" aria-hidden="true"></i>
+            </button>            
+        </div>
+        
+    </div>
+    <div class="opcoes-pagamento" *ngIf="pagamentoAtivo">
+      <span>Selecione a opção de pagamento</span>
+      <div class="opcoes">
+          <input type="radio" id="total" name="forma-pgt" value="1" [(ngModel)] = "formaPagamento">
+          <label for="total">Pagamento total (R$ {{valorFatura}})</label><br>
+          <br>
+          <input type="radio" id="parcial" name="forma-pgt" value="2" [(ngModel)] = "formaPagamento">
+          <label for="parcial">Pagamento minímo(R$ {{valorParcial}})</label><br>
+          <br>
+          <input type="radio" id="outro" name="forma-pgt" value="3" [(ngModel)] = "formaPagamento" (click)="pagamentoOutro()">
+          <label for="outro">Outro valor:</label>
+          <input type="text" class="form-control pagamento" *ngIf="outroValor" mask="separator.2" thousandSeparator="." [(ngModel)] = "outroValorPagamento">
+          <span id="warning-valor" *ngIf="valorInvalido">Valor inserido inválido</span>
+          <span id="warning-valor" *ngIf="semSaldo">Saldo insuficiente</span>
+          <button type="button" class="btn btn-dark finalizarPagamento" [disabled]="!formaPagamento" (click)="finalizarPagamento()">Pagar</button>
+          <button type="button" class="btn btn-dark cancelarPagamento" (click)="cancelarPagamento()">Cancelar</button>
+          
+      </div>
+    </div>
+    <div class="transferencia"> 
+      <div class="pix">
+        <img src="../../assets/pix.png" alt="" id="icon">
+        <p>Área PIX</p>  
+
+        <div class="pix-funcoes" (click)="receber()">
+          <img src="../../assets/piggy-bank.png" class="icone" alt="">          
+          <br>
+          <span>Receber</span>
+        </div>
+        <div class="pix-funcoes" (click)="enviar()">
+          <img src="../../assets/money-bag.png" class="icone">
+          <br>
+          <span>Enviar</span>
+        </div>
+        <div class="pix-funcoes chaves" (click)="chaves()">
+          <img src="../../assets/key-chain.png"  class="icone" alt="">
+          <br>
+          <span>Minhas chaves</span>
+        </div>         
+      </div>
+    </div>
+
+    <div class="area-pix" *ngIf="exibeAreaPIX">
+      <span>Área PIX</span>
+      <p>Qual valor você quer receber ?</p>
+      <br>
+      <input type="text" class="form-control pix-impt" mask="separator.2" thousandSeparator="." placeholder="R$ 0,00" [(ngModel)] = "valorPix" (keyup)="validaValor()">         
+      <button type="button" class="btn btn-dark continuar" [disabled]="!valorValido" (click)="continuar()">Continuar</button> 
+      <button type="button" class="btn btn-dark cancelarPix" (click)="cancelarPix()">Cancelar</button>  
+
+    </div>
+    <div class="dados-pix" *ngIf="habilitaBotao">
+      <div class="dados">
+          <span id="chave">Chave Pix</span>
+          <span id="valor">{{currentUser.cpf}}</span>
+          <br>
+          <br>
+          <span id="chave">Nome</span>
+          <span id="valor">{{currentUser.nomeCompleto}}</span>
+          <br>
+          <br>
+          <span id="chave">Instituição</span>
+          <span id="valor">MeBank</span>
+          <br>
+          <br>
+          <span id="chave">Valor</span>
+          <span id="valor">R$ {{valorPix}}</span>
+      </div>            
+      <img src="../../assets/qr.png" id="qr-code" alt="">
+    </div>
+
+    <div class="area-pix-enviar" *ngIf="exibirEnviar">
+      <span>Área PIX</span>
+      <p>Qual valor você quer enviar ?</p>    
+      <input type="text" class="form-control pix-enviar" placeholder="R$ 0,00" [(ngModel)] = "valorPixEnviar" mask="separator.2" thousandSeparator="." >       
+      <br>
+      <p id="p-send">Para quem você quer enviar ?</p>      
+      <input type="text" class="form-control pix-enviar" placeholder="E-mail, CPF ou Chave Pix.." [(ngModel)] = "destinatarioPix"> 
+      <span *ngIf="valorPixInvalido" id="saldoPixInvalido">Saldo insuficiente</span>
+      <button type="button" class="btn btn-dark enviar" (click)="enviarPix()" [disabled]=" !valorPixEnviar || ! destinatarioPix">Enviar</button> 
+      <button type="button" class="btn btn-dark cancelarEnviar" (click)="cancelarEnviar()">Cancelar</button>  
+    </div>
+
+    <div class="cartoes">
+        <div class="opc-cartoes">
+            <img src="../../assets/credit-card.png" class="icone" alt="">
+            <br>
+            <span>Crédito</span>
+            <br>
+            <span>5564</span>
+        </div>
+        <div class="opc-cartoes">
+          <img src="../../assets/credit-card.png" class="icone" alt="">
+          <br>
+          <span>Crédito</span>
+          <br>
+          <span>5565</span>
+        </div>
+        <div class="opc-cartoes">
+          <img src="../../assets/credit-card.png" class="icone" alt="">
+          <br>
+          <span>Débito</span>
+          <br>
+          <span>6645</span>
+        </div>
+    </div>
+
+    <div class="keys" *ngIf="habilitaChaves">
+      <span>Suas chaves</span>
+      <br>
+      <ul>
+        <li>{{currentUser.cpf}}</li>
+      </ul>
+      <button type="button" (click)="fecharChaves()">X</button>
+    </div>
+
+  <a href="https://www.disneyplus.com/pt-br/welcome?cid=DSS-Search-Google-71700000075038498-&s_kwcid=AL!8468!3!546262373716!e!!g!!disney&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPKajfJfgQKLexiDQfM1DHWb1ReeZgXBXSUUWfYYDM_Yy8LlHQF4EGhoCiPsQAvD_BwE&gclsrc=aw.ds" target="_blank"><img src="../../assets/banner.jpg" id="ad" alt=""></a>
+
+  <div class="icone-assistente-virtual" *ngIf="exibeIcone">
+    <img src="../../assets/messenger.png" class="icone" alt="" (click)="chat()">
+  </div>
+
+  <div class="chat-window" *ngIf="exibeChat">
+
+      <div class="chat-header" (click)="icone()">
+        <p>MeBot - chat</p>
+      </div>
+
+      <img src="../../assets/depression.png" class="chat-fundo" alt="">
+      <br>
+      <br>
+        <span>Função em construção.</span> <br>       
+        <span>Por favor aguarde.</span>
+
+  </div>
+  <div class="aba" *ngIf="exibeAba" (click)="chat()">
+    <p>MeBot - chat</p>
+  </div>
+
+  <!-- <ul style="position: absolute; right: 0px;">
+    <li *ngFor="let user of users">
+        {{user.nomeSocial}} ({{user.nomeCompleto}} {{user.cpf}} {{user.password}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+    </li>
+</ul> -->
+
+
+
+</nav>
