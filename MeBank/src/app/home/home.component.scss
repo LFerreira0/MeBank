@@ -1,6 +1,6 @@
 .home{
     height: 94vh;
-    width: 1879px;
+    width: 100%;    
     background-color: #fafafa;
 
     #inicio{
@@ -8,6 +8,11 @@
         top: 10px;
         font-size: 25px;        
     }
+}
+
+.controle-banco{    
+    width: 100%;
+    height: 100%;
 }
 
 #sem-atividades{
@@ -20,25 +25,21 @@
 .controle-saldo{    
     width: 96.9vh;
     border: 1px solid #000;
-    position: absolute;
-    border-radius: 5px;
-    top: 20px;
-    padding: 10px;    
+    border-radius: 5px;   
+    padding: 10px;   
+    float: left;     
+    height: 47.3vh;
     
-    #saldoInsuficiente{
-        position: absolute;
-        bottom: 10px;
+    #saldoInsuficiente{                
         font-size: 13px;
         color: red;
-        left: 23.5%;
+        margin-top: 15vh;
     }
 
-    #poupancaInsuficiente{
-        position: absolute;
-        bottom: 10px;
+    #poupancaInsuficiente{        
         font-size: 13px;
         color: red;
-        left: 35.5%;
+        
     }
 
     h1{
@@ -51,18 +52,29 @@
         font-weight: bold;
         margin-top: 30px !important;
     }
-    #saldo{
-        margin-left: 2.5%;
+    #saldo{        
         color: DodgerBlue;
     }
 
-    .valor-guardado{        
-        display: inline-block;
-        width: 20%;
-        position: absolute;
-        top: 2.5%;
-        right: 3.5%;
+    .exibiSaldo{        
+        width: 50%;
+        float: left;
+    
+        span{
+            margin-left: 25px;
+        }
+    }
+
+    .valor-guardado{                
+        width: 50%;
         color: rgb(145, 145, 145);
+        float: left;        
+        text-align: right;
+
+        span{
+            margin-right: 25px;
+        }
+
     }
 }
 #historico{
@@ -86,7 +98,7 @@
 
 .btn{
     margin-left: 2.5%;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .icon{
     margin-left: 10px;
@@ -94,12 +106,11 @@
 .fatura{
     width: 48.4vh;
     border: 1px solid #000;
-    position: absolute;
-    border-radius: 5px;
-    top: 20px;
-    left: 51%;
-    height: 45vh;
+    border-radius: 5px;        
+    height: 47.3vh;
     min-height: 45vh;
+    float: left;
+    margin-left: 2px;
     span{
         font-size: 20px;
         margin-left: 2.5%;
@@ -142,32 +153,28 @@
     margin-top: 5%;       
 }
 
-.opcoes-pagamento{
-    position: absolute;
+.opcoes-pagamento{    
     width: 20%;
-    height: 30%;    
-    left: 76.1%;
-    top: 20px;
+    height: 33vh;        
     line-height: 15px;
     border: 1px solid #000;
     border-radius: 5px;
-    
+    float: left;
+    margin-left: 2px;
+
     span{
         font-size: 20px;        
-        font-weight: bold;
-        position: absolute;        
-        top: 20px;
-        left: 9%;
-
+        font-weight: bold;  
+        width: 80%;                
+        margin-left: 10%;
     }
 
-    .opcoes{        
-        position: absolute;
-        top: 25%;
+    .opcoes{                
         width: 82%;        
         margin-left: 9%;
         font-weight: bold;        
         height: 65%;
+        margin-top: 50px;
 
         label{
             margin-left: 5px;
@@ -180,24 +187,17 @@
             margin-top: -10px;
         }
         
-        .finalizarPagamento{
-            position: absolute;
-            bottom: 10px;
-            left: 0px;
+        .finalizarPagamento{   
+            margin-top: 10px;
         }
 
-        .cancelarPagamento{
-            position: absolute;
-            bottom: 10px;
-            left: 30%;
+        .cancelarPagamento{       
+            margin-top: 10px;
         }
 
         #warning-valor{
             color: red;
-            font-size: 13px;
-            position: absolute;
-            top: 60%;
-            left: 0%;
+            font-size: 13px;      
         }
     }
 }
@@ -208,15 +208,15 @@
 
 .pay{
     margin-left: 8%;
-    margin-top: 32px;
+    margin-top: 10px;
 }
 .transferencia{
     width: 96.9vh;
     height: 15%;
-    border: 1px solid #000;
-    position: absolute;
-    top: 47.3vh;
-    border-radius: 5px;      
+    border: 1px solid #000;        
+    border-radius: 5px;   
+    float: left;   
+    margin-top: 2px;
 }
 .transfere{    
     float: left;
@@ -279,14 +279,13 @@
 .cartoes{
     width: 48.4vh;
     border: 1px solid #000;
-    position: absolute;
-    border-radius: 5px;
-    position: absolute;
-    top: 47.3vh;
-    left: 51%;
+    border-radius: 5px;            
     height: 15%;
+    float: left;
+    margin-top: 2px;
+    margin-left: 2px;
 
-    .opc-cartoes{
+    .opc-cartoes{        
         width: 30%;
         height: 100%;        
         float: left;
@@ -299,13 +298,13 @@
 }
 .icone{
     height: 50px !important;    
-    margin-top: 15px;        
+    margin-top: 5px;        
 }
-#ad{
-    position: absolute;
-    top: 70%;
-    width: 75.1%;
+#ad{  
+    width: 76.5%;
     height: 15%;
+    float: left;
+    margin-top: 50px;
 }
 .btn-guardar{
     float: left;
@@ -320,19 +319,19 @@
     width: 20%;        
     float: left;
     margin-left: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .guardar{    
     width: 20%; 
     float: left;       
     margin-left: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .resgatar{
     width: 20%;
     float: left;
     margin-left: 10px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .icone-assistente-virtual{    
     border-radius: 50%;
@@ -368,7 +367,7 @@
 
     .chat-fundo{
         height: 75px;
-        margin-top: 15%;
+        margin-top: 5%;
         opacity: 0.5;
     }
 
@@ -418,22 +417,19 @@
 }
 
 .area-pix{
-    position: absolute;
     width: 20%;
-    height: 29%;    
-    left: 76.1%;
-    top: 20px;
+    height: 33vh;        
     line-height: 15px;
     border: 1px solid #000;
     border-radius: 5px;
+    float: left;
+    margin-left: 2px;
     
 
     span{
         font-size: 20px;        
-        font-weight: bold;
-        position: absolute;        
-        top: 20px;
-        left: 9%;
+        font-weight: bold;  
+        margin-left: 30px;
     }
 
     p{
@@ -456,8 +452,8 @@
     position: absolute;
     width: 20%;
     height: 34%;    
-    left: 76.1%;
-    top: 31.4%;
+    left: 60.55%;
+    top: 34.5vh;
     line-height: 15px;
     border: 1px solid #000;
     border-radius: 5px;
@@ -477,28 +473,25 @@
     }
 
     #qr-code{
-        width: 40%;
-        margin-left: 30%;
+        width: 25%;
+        margin-left: 37.5%;
         margin-top: 5%;
     }
 }
 
 .area-pix-enviar{
-    position: absolute;
     width: 20%;
-    height: 38.5%;    
-    left: 76.1%;
-    top: 20px;
+    height: 47.3vh;        
     line-height: 15px;
     border: 1px solid #000;
     border-radius: 5px;
+    float: left;
+    margin-left: 2px;
 
     span{
         font-size: 20px;        
-        font-weight: bold;
-        position: absolute;        
-        top: 20px;
-        left: 9%;
+        font-weight: bold;  
+        margin-left: 30px; 
     }
     
     p{
@@ -521,43 +514,38 @@
     }
     
     #saldoPixInvalido{
-        position: absolute;
-        top: 71%;
         color: red;
         font-size: 13px;
     }
 }
 
 .keys{
-    position: absolute;
+    float: left;
     width: 20%;
-    height: 15%;    
-    left: 76.1%;
-    top: 50.3%;
+    height: 15%;        
     line-height: 15px;
     border: 1px solid #000;
     border-radius: 5px;    
+    margin-top: 2px;
 
     span{
         font-size: 20px;        
-        font-weight: bold;
-        position: absolute;        
-        top: 20px;
-        left: 9%;
+        font-weight: bold;  
+        margin-left: 30px;
+        float: left;
     }
     ul{
         margin-top: 40px;
         margin-left: 5%;
     }
 
-    button{
-        position: absolute;
-        font-size: 20px;
-        top: 17px;
-        right: 5%;
+    button{    
+        font-size: 20px;        
         font-weight: bold;
         background-color: #fff;
         border: none;
+        float: left;
+        margin-left: 100px;        
     }
 
 }

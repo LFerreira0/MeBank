@@ -1,17 +1,22 @@
 ﻿
 <nav class="navbar navbar-expand header-style home">
+  <div class="controle-banco">
     <div class="controle-saldo">
-        <span>Saldo e extrato da conta corrente</span>
-        <br>
-        <span id="saldo">R$ {{saldo}}</span>            
-        <h1>Histórico</h1>
-        <h2 *ngIf="atividades.length == 0" id="sem-atividades">Você ainda não tem atividades teste mês</h2>
+        <div class="exibiSaldo">
+          <span>Saldo e extrato da conta corrente</span>
+          <br>
+          <span id="saldo">R$ {{saldo}}</span>    
+        </div>
         <div class="valor-guardado">
           <span><i class="fa fa-lock" aria-hidden="true"></i>
             Valor guardado</span>
           <br>
           <span>R$ {{saldoPoupanca}}</span>
-        </div>
+        </div>  
+        <br>      
+        <h1>Histórico</h1>
+        <h2 *ngIf="atividades.length == 0" id="sem-atividades">Você ainda não tem atividades teste mês</h2>
+  
         <table id="historico" *ngIf="atividades.length > 0">
             <tr>
               <th>Nome</th>
@@ -40,11 +45,11 @@
 
           <button type="button" class="btn btn-dark btn-guardar" (click)="guardar()">Guardar</button>
           <input type="text" class="form-control guardar" mask="separator.0" thousandSeparator="." *ngIf="guardarAtivo" [(ngModel)] = "valorGuardado"/>
-          
+          <span *ngIf="saldoInsuficiente" id="saldoInsuficiente">Saldo insuficiente</span>
+
           <button type="button" class="btn btn-dark btn-resgatar" (click)="resgatar()">Resgatar</button>
           <input type="text" class="form-control resgatar" mask="separator.2" thousandSeparator="." *ngIf="resgatarAtivo" [(ngModel)] = "valorResgate"> 
-
-          <span *ngIf="saldoInsuficiente" id="saldoInsuficiente">Saldo insuficiente</span>
+          
           <span *ngIf="poupancaInsuficiente" id="poupancaInsuficiente">Fundo insuficiente</span>
           
        
@@ -100,10 +105,52 @@
             </table>       
             <button type="button" class="btn btn-dark pay" (click)="pagarFatura()">Pagar<i class="fa fa-credit-card icon" aria-hidden="true"></i>
             </button>            
-        </div>
-        
+        </div>        
+    </div>
+    <div class="area-pix" *ngIf="exibeAreaPIX">
+      <br>
+      <span>Área PIX</span>
+      <p>Qual valor você quer receber ?</p>
+      <br>
+      <input type="text" class="form-control pix-impt" mask="separator.2" thousandSeparator="." placeholder="R$ 0,00" [(ngModel)] = "valorPix" (keyup)="validaValor()">         
+      <button type="button" class="btn btn-dark continuar" [disabled]="!valorValido" (click)="continuar()">Continuar</button> 
+      <button type="button" class="btn btn-dark cancelarPix" (click)="cancelarPix()">Cancelar</button>  
+    </div>
+
+    <div class="dados-pix" *ngIf="habilitaBotao">
+      <div class="dados">
+          <span id="chave">Chave Pix</span>
+          <span id="valor">{{currentUser.cpf}}</span>
+          <br>
+          <br>
+          <span id="chave">Nome</span>
+          <span id="valor">{{currentUser.nomeCompleto}}</span>
+          <br>
+          <br>
+          <span id="chave">Instituição</span>
+          <span id="valor">MeBank</span>
+          <br>
+          <br>
+          <span id="chave">Valor</span>
+          <span id="valor">R$ {{valorPix}}</span>
+      </div>            
+      <img src="../../assets/qr.png" id="qr-code" alt="">
+    </div>
+    <div class="area-pix-enviar" *ngIf="exibirEnviar">
+      <br>
+      <span>Área PIX</span>
+      <p>Qual valor você quer enviar ?</p>    
+      <input type="text" class="form-control pix-enviar" placeholder="R$ 0,00" [(ngModel)] = "valorPixEnviar" mask="separator.2" thousandSeparator="." >       
+      <br>
+      <p id="p-send">Para quem você quer enviar ?</p>      
+      <input type="text" class="form-control pix-enviar" placeholder="E-mail, CPF ou Chave Pix.." [(ngModel)] = "destinatarioPix"> 
+      
+      <button type="button" class="btn btn-dark enviar" (click)="enviarPix()" [disabled]=" !valorPixEnviar || ! destinatarioPix">Enviar</button> 
+      <button type="button" class="btn btn-dark cancelarEnviar" (click)="cancelarEnviar()">Cancelar</button>  
+      <br><span *ngIf="valorPixInvalido" id="saldoPixInvalido">Saldo insuficiente</span>
     </div>
     <div class="opcoes-pagamento" *ngIf="pagamentoAtivo">
+      <br>
       <span>Selecione a opção de pagamento</span>
       <div class="opcoes">
           <input type="radio" id="total" name="forma-pgt" value="1" [(ngModel)] = "formaPagamento">
@@ -117,6 +164,7 @@
           <input type="text" class="form-control pagamento" *ngIf="outroValor" mask="separator.2" thousandSeparator="." [(ngModel)] = "outroValorPagamento">
           <span id="warning-valor" *ngIf="valorInvalido">Valor inserido inválido</span>
           <span id="warning-valor" *ngIf="semSaldo">Saldo insuficiente</span>
+          <br><br>
           <button type="button" class="btn btn-dark finalizarPagamento" [disabled]="!formaPagamento" (click)="finalizarPagamento()">Pagar</button>
           <button type="button" class="btn btn-dark cancelarPagamento" (click)="cancelarPagamento()">Cancelar</button>
           
@@ -144,49 +192,7 @@
         </div>         
       </div>
     </div>
-
-    <div class="area-pix" *ngIf="exibeAreaPIX">
-      <span>Área PIX</span>
-      <p>Qual valor você quer receber ?</p>
-      <br>
-      <input type="text" class="form-control pix-impt" mask="separator.2" thousandSeparator="." placeholder="R$ 0,00" [(ngModel)] = "valorPix" (keyup)="validaValor()">         
-      <button type="button" class="btn btn-dark continuar" [disabled]="!valorValido" (click)="continuar()">Continuar</button> 
-      <button type="button" class="btn btn-dark cancelarPix" (click)="cancelarPix()">Cancelar</button>  
-
-    </div>
-    <div class="dados-pix" *ngIf="habilitaBotao">
-      <div class="dados">
-          <span id="chave">Chave Pix</span>
-          <span id="valor">{{currentUser.cpf}}</span>
-          <br>
-          <br>
-          <span id="chave">Nome</span>
-          <span id="valor">{{currentUser.nomeCompleto}}</span>
-          <br>
-          <br>
-          <span id="chave">Instituição</span>
-          <span id="valor">MeBank</span>
-          <br>
-          <br>
-          <span id="chave">Valor</span>
-          <span id="valor">R$ {{valorPix}}</span>
-      </div>            
-      <img src="../../assets/qr.png" id="qr-code" alt="">
-    </div>
-
-    <div class="area-pix-enviar" *ngIf="exibirEnviar">
-      <span>Área PIX</span>
-      <p>Qual valor você quer enviar ?</p>    
-      <input type="text" class="form-control pix-enviar" placeholder="R$ 0,00" [(ngModel)] = "valorPixEnviar" mask="separator.2" thousandSeparator="." >       
-      <br>
-      <p id="p-send">Para quem você quer enviar ?</p>      
-      <input type="text" class="form-control pix-enviar" placeholder="E-mail, CPF ou Chave Pix.." [(ngModel)] = "destinatarioPix"> 
-      <span *ngIf="valorPixInvalido" id="saldoPixInvalido">Saldo insuficiente</span>
-      <button type="button" class="btn btn-dark enviar" (click)="enviarPix()" [disabled]=" !valorPixEnviar || ! destinatarioPix">Enviar</button> 
-      <button type="button" class="btn btn-dark cancelarEnviar" (click)="cancelarEnviar()">Cancelar</button>  
-    </div>
-
-    <div class="cartoes">
+     <div class="cartoes">
         <div class="opc-cartoes">
             <img src="../../assets/credit-card.png" class="icone" alt="">
             <br>
@@ -211,12 +217,13 @@
     </div>
 
     <div class="keys" *ngIf="habilitaChaves">
+      <br>
       <span>Suas chaves</span>
+      <button type="button" (click)="fecharChaves()">X</button>
       <br>
       <ul>
         <li>{{currentUser.cpf}}</li>
-      </ul>
-      <button type="button" (click)="fecharChaves()">X</button>
+      </ul>      
     </div>
 
   <a href="https://www.disneyplus.com/pt-br/welcome?cid=DSS-Search-Google-71700000075038498-&s_kwcid=AL!8468!3!546262373716!e!!g!!disney&gclid=CjwKCAjw4qCKBhAVEiwAkTYsPKajfJfgQKLexiDQfM1DHWb1ReeZgXBXSUUWfYYDM_Yy8LlHQF4EGhoCiPsQAvD_BwE&gclsrc=aw.ds" target="_blank"><img src="../../assets/banner.jpg" id="ad" alt=""></a>
@@ -249,6 +256,6 @@
     </li>
 </ul> -->
 
-
+</div>
 
 </nav>
